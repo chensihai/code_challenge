@@ -1,0 +1,5 @@
+code_challenge-library:
+  js:
+    js/script.js: {}
+  dependencies:
+    - core/drupal.ajax

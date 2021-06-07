@@ -1,0 +1,5 @@
+name: 'Code Challenge'
+type: module
+description: 'Web development code challenge'
+package: 'Custom'
+core_version_requirement: ^8||^9.0

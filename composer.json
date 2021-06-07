@@ -1,0 +1,19 @@
+{
+    "name": "code_challenge",
+    "description": "Web development code challenge",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "keywords": [  
+    "List", "Sporters", "ACMCME"
+    ],
+    "homepage": "https://www.drupal.org/project/simon_code_challenge",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/simon_code_challenge",
+        "source": "http://cgit.drupalcode.org/simon_code_challenge"
+    },
+    "require": {
+      "drupal/core": "^8 || ^9"
+    }, 
+   "require-dev": {  }    
+}

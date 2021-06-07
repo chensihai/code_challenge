@@ -1,0 +1,9 @@
+code_challenge.code_challenge:
+  path: '/admin/config/code_challenge'
+  defaults:
+    _form: '\Drupal\code_challenge\Form\CodeChallenge'
+    _title: 'Code Challenge'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE

@@ -1,0 +1,69 @@
+<?php
+
+/**
+* @file
+* Contains code_challenge.module.
+*/
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+* Implements hook_help().
+*/
+function code_challenge_help($route_name, RouteMatchInterface $route_match) {
+    switch ($route_name) {
+        // Main module help for the code_challenge module.
+        case 'help.page.code_challenge':
+            $output = '';
+            $output .= '<h3>' . t('About') . '</h3>';
+            $output .= '<p>' . t('Web development code challenge') . '</p>';
+            return $output;
+
+        default:
+    }
+}
+
+/**
+* Implements hook_theme().
+*/
+function code_challenge_theme() {
+    return [
+        'acmcme_sports_block' => [
+            'variables' => [
+                'content' => NULL
+            ],
+            'render element' => 'children',
+        ],
+    ];
+
+}
+function  code_challenge_preprocess_html(&$variables) {
+
+    $block = \Drupal\block\Entity\Block::load('acmcmesportsblock');
+    if($block==null) {
+    \Drupal::logger('my_module')->notice( "block acmcmesportsblock not placed yet");
+    return;
+    }
+    $visibility = \Drupal\block\Entity\Block::load('acmcmesportsblock')->getVisibility();
+    $current_path = \Drupal::service('path.current')->getPath();
+
+   if((!empty($visibility['request_path']['pages']))&&($visibility['request_path']['pages']=='<front>'&&$current_path=="/node"||$visibility['request_path']['pages']==$current_path))
+    {        // Make sure we are in a node
+        $config = \Drupal::config('code_challenge.codechallenge');
+        $meta =  $config->get('meta_message');
+
+        $title = [
+            '#tag' => 'title',            // Set title for element
+            '#value' => 'Sample Title2'    // Set value for title
+        ];
+        $description = [
+            '#tag' => 'meta',             // Set meta for element
+            '#attributes' => [            // Set attributes for meta
+                'name' => 'description',
+                'content' =>$meta,
+            ],
+        ];
+        $variables['page']['#attached']['html_head'][] = [$title, 'title2'];
+        $variables['page']['#attached']['html_head'][] = [$description, 'description2'];
+    }
+}

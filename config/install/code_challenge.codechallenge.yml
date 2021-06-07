@@ -1,0 +1,3 @@
+code_challenge:
+  api_endpoint: 'http://json_format_endpoint'; //return data like in file /tests/data4test.txt
+  meta_message: 'Acmcme sports name list33'

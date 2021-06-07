@@ -1,0 +1,6 @@
+code_challenge.code_challenge:
+  title: 'Code Challenge'
+  route_name: code_challenge.code_challenge
+  description: 'A description for the menu entry'
+  parent: system.admin_config_system
+  weight: 99
