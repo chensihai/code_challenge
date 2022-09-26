@@ -64,8 +64,9 @@ class ACMcmeSportsBlock extends BlockBase implements ContainerFactoryPluginInter
         $data=json_decode($result);
         $items=$data->results->data->team;
         //var_dump($data);  //$data->results->columns
+        $module_path = \Drupal::service('extension.list.module')->getPath('code_challenge');
         return array(
-            '#content' =>['rows'=>(array) $items,   'header'=>(array)$data->results->columns],  
+            '#content' =>['rows'=>(array) $items,   'header'=>(array)$data->results->columns, 'module_path' => $module_path],  
             '#theme' => 'acmcme_sports_block',
             'acmcme_sports_block' => array(
                 '#markup'=>'Implement ACMcmeSportsBlock',
